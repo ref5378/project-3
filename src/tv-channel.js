@@ -1,7 +1,6 @@
 // import stuff
 import { LitElement, html, css } from 'lit';
 
-
 export class TvChannel extends LitElement {
   // defaults
   constructor() {

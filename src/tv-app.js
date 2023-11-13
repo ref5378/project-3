@@ -11,6 +11,11 @@ export class TvApp extends LitElement {
     this.name = '';
     this.source = new URL('../assets/channels.json', import.meta.url).href;
     this.listings = [];
+    this.activeItem = {
+      title: null,
+      id: null,
+      description: null,
+    };
   }
   // convention I enjoy using to define the tag's name
   static get tag() {
@@ -22,6 +27,7 @@ export class TvApp extends LitElement {
       name: { type: String },
       source: { type: String },
       listings: { type: Array },
+      activeItem: { type: Object }
     };
   }
   // LitElement convention for applying styles JUST to our element
@@ -43,25 +49,66 @@ export class TvApp extends LitElement {
       ${
         this.listings.map(
           (item) => html`
-            <tv-channel 
+            <tv-channel
+              id="${item.id}"
               title="${item.title}"
               presenter="${item.metadata.author}"
+              description="${item.description}"
               @click="${this.itemClick}"
             >
             </tv-channel>
           `
         )
       }
-      <div>
+      <div style= "display: inline-block;">
+      ${this.activeItem.name}
+      ${this.activeItem.description}
         <!-- video -->
+        <div>
+        <iframe
+          width="750"
+          height="400"
+          src="${this.createSource()}" 
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+        </div>
         <!-- discord / chat - optional -->
+        <div style= "margin-right: 300;">
+        <iframe
+          src="https://discord.com/widget?id=YOUR_DISCORD_SERVER_ID&theme=dark"
+          width="400"
+          height="800"
+          allowtransparency="true"
+          frameborder="0"
+          (attribute)sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+        ></iframe>
+        </div>
       </div>
       <!-- dialog -->
       <sl-dialog label="Dialog" class="dialog">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      ${this.activeItem.title},
+      ${this.activeItem.description}
         <sl-button slot="footer" variant="primary" @click="${this.closeDialog}">Close</sl-button>
       </sl-dialog>
     `;
+  }
+changeVideo() {
+    const iframe = this.shadowRoot.querySelector('iframe');
+    iframe.src = this.createSource();
+  }
+   extractVideoId(link) {
+    try {
+      const url = new URL(link);
+      const searchParams = new URLSearchParams(url.search);
+      return searchParams.get("v");
+    } catch (error) {
+      console.error("Invalid URL:", link);
+      return null;
+    }
+  }
+  createSource() {
+    return "https://www.youtube.com/embed/" + this.extractVideoId(this.activeItem.video);
   }
 
   closeDialog(e) {
@@ -71,6 +118,13 @@ export class TvApp extends LitElement {
 
   itemClick(e) {
     console.log(e.target);
+    this.activeItem = {
+      description: e.target.description,
+      title: e.target.title,
+      id: e.target.id,
+      video: e.target.video, 
+    };
+    this.changeVideo(); // Call changeVideo 
     const dialog = this.shadowRoot.querySelector('.dialog');
     dialog.show();
   }
@@ -91,6 +145,7 @@ export class TvApp extends LitElement {
     await fetch(source).then((resp) => resp.ok ? resp.json() : []).then((responseData) => {
       if (responseData.status === 200 && responseData.data.items && responseData.data.items.length > 0) {
         this.listings = [...responseData.data.items];
+        console.log(this.listings);
       }
     });
   }

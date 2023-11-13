@@ -1,45 +1,68 @@
 {
-  "id": "123-ddc-d321d-d2e-dd2",
-  "title": "My outline",
-  "author": "LRNWebComponents",
-  "description": "A series of related material to teach you about the structure of content.",
-  "license": "by-sa",
-  "metadata": {},
-  "items": [
-    {
-      "id": "item-1",
-      "indent": "1",
-      "location": "outline.html",
-      "slug": "outline",
-      "order": "0",
-      "parent": null,
-      "title": "Outline",
-      "description": "A description at a glance of this item potentially",
-      "metadata": {
-        "icon": "icons:view-quilt"
+  "status": 200,
+  "data": {
+    "id": "123-123-123-123",
+    "title": "EdTechJokerTV",
+    "author": "EdTechJoker",
+    "description": "A series of talks to learn about JSON and web standard communications",
+    "license": "by-sa",
+    "metadata": {},
+    "items": [
+      {
+        "id": "item-1",
+        "indent": 0,
+        "location": "hax-wp-killer.html",
+        "slug": "hax-wp-killer",
+        "order": 0,
+        "parent": null,
+        "title": "Hot Ones: Shaquille O'Neal",
+        "description": "Shaquille O'Neal joins Sean Evans in a high-stakes free-throw wing-eating contest.",
+        "metadata": {
+          "source": "https://www.youtube.com/watch?v=_sZH-psg9yE",
+          "timecode": 0,
+          "author":"First We Feast",
+          "created": 1697033522,
+          "updated": 1697034021
+        }
+      },
+      {
+        "id": "item-3421",
+        "indent": 0,
+        "location": "hax-wp-killer.html",
+        "slug": "hax-wp-killer",
+        "order": 0,
+        "parent": null,
+        "title": "Hot Ones: Paul Rudd",
+        "description": "Paul Rudd improvises a tearful scene inspired by the wings of death.",
+        "metadata": {
+          "source": "https://www.youtube.com/watch?v=gWVHses2GCY&t=1630s",
+          "timecode": 45,
+          "author":"First We Feast",
+          "created": 1697033522,
+          "updated": 1697034021
+        }
+      },
+      {
+        "id": "item-2",
+        "indent": 0,
+        "location": "this-is-water.html",
+        "slug": "this-is-water",
+        "order": 0,
+        "parent": null,
+        "title": "Hot Ones: Florence Pugh",
+        "description": "Florence Pugh takes on the wings of death and discusses the MCU, the best pub in Oxford, and the perfect cup of tea.",
+        "metadata": {
+          "source": "https://www.youtube.com/watch?v=9oSm0c6bPTM&list=PLAzrgbu8gEMKjocmA3l7Hcpyqt3oU-Die&index=4",
+          "timecode": 45,
+          "author":"First We Feast",
+          "created": 1697033522,
+          "updated": 1697034021
+        }
       }
-    },
-    {
-      "id": "item-2",
-      "indent": "2",
-      "location": "introduction.html",
-      "slug": "introduction",
-      "order": "0",
-      "parent": "item-1",
-      "title": "Introduction to outlines",
-      "description": "A description at a glance of this item potentially",
-      "metadata": {}
-    },
-    {
-      "id": "item-3",
-      "indent": "2",
-      "location": "files/a-2nd-page-item.html",
-      "slug": "a-2nd-page-item",
-      "order": "1",
-      "parent": "item-1",
-      "title": "An item in an outline",
-      "description": "A description at a glance of this item potentially",
-      "metadata": {}
-    }
-  ]
+    ]
+  }
 }
+
+
+
+     
