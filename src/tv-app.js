@@ -43,25 +43,38 @@ export class TvApp extends LitElement {
         justify-self: center;
         max-width: 1344px;
         justify-items: left;
-        display: flex;
+        display: inline-flex;
         flex-direction: row;
         flex-grow: 1;
         flex-wrap: nowrap;
         overflow-x: auto;
         overflow-y: auto;
-        padding-left: .5rem;
-        padding-right: .5rem;
+        padding-right: 10px;
         text-rendering: optimizeLegibility;
         width: 100%;
-        margin: 0 auto;
         position: relative;
         animation-delay: 1s;
         animation-duration: 1s;
         line-height: 1.5;
         font-size: 1em;
       }
+      .title-container{
+        position: relative;
+        align-self: center;
+        margin: 20px;
+      }
       h5 {
         font-weight: 400;
+      }
+      .discord {
+        display: inline-block;
+        padding-left: 20px;
+      }
+      .middle-page{
+        display: inline-flex;
+      }
+      .wrapper{
+        display: inline-flex;
       }
       .
       `,
@@ -88,34 +101,41 @@ export class TvApp extends LitElement {
         )
       }
        </div>
-      <div style= "display: inline-block;">
       ${this.activeItem.name}
         <!-- video -->
-        <div>
+          <div class="wrapper">
         <iframe
           width="750"
           height="400"
-          src="${this.createSource()}" 
+          src="https://www.youtube.com/embed/_sZH-psg9yE" 
           frameborder="0"
           allowfullscreen
         ></iframe>
-        </div>
         <!-- discord / chat - optional -->
-        <div style= "margin-right: 300;">
-        <iframe
-          src="https://discord.com/widget?id=YOUR_DISCORD_SERVER_ID&theme=dark"
-          width="400"
-          height="800"
-          display: inline-flex;
-          allowtransparency="true"
-          frameborder="0"
-          (attribute)sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-        ></iframe>
-        </div>
+        <div class="discord">
+          <widgetbot 
+          server="954008116800938044" 
+          channel="1106691466274803723" 
+          width="100%" 
+          height="100%" 
+          style="display: inline-block; 
+          overflow: hidden; 
+          background-color: rgb(54, 57, 62); 
+          border-radius: 7px; 
+          vertical-align: top; 
+          width: 100%; 
+          height: 100%; ">
+          <iframe title="WidgetBot Discord chat embed" 
+          allow="clipboard-write; fullscreen" 
+          src="https://e.widgetbot.io/channels/954008116800938044/1106691466274803723?api=a45a80a7-e7cf-4a79-8414-49ca31324752" 
+          style="border: none; width: 100%; height: 100%;">
+        </iframe>
+      </widgetbot>
+            <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
       </div>
+    </div>
       <!-- dialog -->
-      <sl-dialog label="Dialog" class="dialog">
-      ${this.activeItem.title},
+      <sl-dialog label="${this.activeItem.title}" class="dialog">
       ${this.activeItem.description}
         <sl-button slot="footer" variant="primary" @click="${this.closeDialog}">Close</sl-button>
       </sl-dialog>
