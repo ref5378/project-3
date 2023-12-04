@@ -49,7 +49,6 @@ export class TvApp extends LitElement {
         flex-wrap: nowrap;
         overflow-x: auto;
         overflow-y: auto;
-        padding-right: 10px;
         text-rendering: optimizeLegibility;
         width: 100%;
         position: relative;
@@ -61,7 +60,7 @@ export class TvApp extends LitElement {
       .title-container{
         position: relative;
         align-self: center;
-        margin: 20px;
+        margin: 10px;
       }
       h5 {
         font-weight: 400;
@@ -95,6 +94,7 @@ export class TvApp extends LitElement {
               description="${item.description}"
               @click="${this.itemClick}"
               video="${item.metadata.source}"
+              start-time="${item.metadata.startTime}"
             >
             </tv-channel>
           `
@@ -134,10 +134,15 @@ export class TvApp extends LitElement {
             <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
       </div>
     </div>
+    <tv-channel title=${this.activeItem.title} presenter="${this.activeItem.author}">
+    <p id= "description">${this.activeItem.description}
+    </p>
+  </tv-channel>
+
       <!-- dialog -->
       <sl-dialog label="${this.activeItem.title}" class="dialog">
       ${this.activeItem.description}
-        <sl-button slot="footer" variant="primary" @click="${this.closeDialog}">Close</sl-button>
+        <sl-button slot="footer" variant="primary" @click="${this.watchVideo}">Watch</sl-button>
       </sl-dialog>
     `;
   }
@@ -159,9 +164,15 @@ changeVideo() {
     return "https://www.youtube.com/embed/" + this.extractVideoId(this.activeItem.video);
   }
 
-  closeDialog(e) {
+  playSource(){
+    return this.itemClick(this.createSource);
+  }
+
+  watchVideo(e) {
     const dialog = this.shadowRoot.querySelector('.dialog');
     dialog.hide();
+    const iframe = this.shadowRoot.querySelector('iframe');
+    iframe.src = this.playSource();
   }
 
   itemClick(e) {

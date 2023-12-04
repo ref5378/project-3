@@ -9,10 +9,8 @@
     "metadata": {},
     "items": [
       {
-        "id": "item-1",
+        "id": "Shaq",
         "indent": 0,
-        "location": "hax-wp-killer.html",
-        "slug": "hax-wp-killer",
         "order": 0,
         "parent": null,
         "title": "Hot Ones: Shaquille O'Neal",
@@ -20,16 +18,16 @@
         "metadata": {
           "source": "https://www.youtube.com/watch?v=_sZH-psg9yE",
           "timecode": 0,
+          "startTime": "12:00pm",
+          "duration": 60,
           "author":"First We Feast",
           "created": 1697033522,
           "updated": 1697034021
         }
       },
       {
-        "id": "item-3421",
+        "id": "Rudd",
         "indent": 0,
-        "location": "hax-wp-killer.html",
-        "slug": "hax-wp-killer",
         "order": 0,
         "parent": null,
         "title": "Hot Ones: Paul Rudd",
@@ -43,10 +41,8 @@
         }
       },
       {
-        "id": "item-2",
+        "id": "Pugh",
         "indent": 0,
-        "location": "this-is-water.html",
-        "slug": "this-is-water",
         "order": 0,
         "parent": null,
         "title": "Hot Ones: Florence Pugh",
@@ -60,14 +56,12 @@
         }
       },
       {
-        "id": "item-3",
+        "id": "John",
         "indent": 0,
-        "location": "this-is-water.html",
-        "slug": "this-is-water",
         "order": 0,
         "parent": null,
         "title": "Hot Ones: John Mulaney",
-        "description": "John Mulaney takes on the wings of death and discusses the perils of fish food, the writers strike, and the influence of Chris Rock. Happy 300th episode of Hot Ones, Spice Lords!",
+        "description": "John Mulaney takes on the wings of death and discusses the perils of fish food, the writers strike, and the influence of Chris Rock.",
         "metadata": {
           "source": "https://www.youtube.com/watch?v=W78ChV1ZE-A&list=PLAzrgbu8gEMIIK3r4Se1dOZWSZzUSadfZ&index=22",
           "timecode": 45,
@@ -77,10 +71,8 @@
         }
       },
       {
-        "id": "item-4",
+        "id": "SNL",
         "indent": 0,
-        "location": "this-is-water.html",
-        "slug": "this-is-water",
         "order": 0,
         "parent": null,
         "title": "Hot Ones: Melissa McCarthy",
@@ -94,10 +86,8 @@
         }
       },
       {
-        "id": "item-5",
+        "id": "Emma",
         "indent": 0,
-        "location": "this-is-water.html",
-        "slug": "this-is-water",
         "order": 0,
         "parent": null,
         "title": "Hot Ones: Emma Chamberlain",
