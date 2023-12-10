@@ -6,9 +6,12 @@ export class TvChannel extends LitElement {
   // defaults
   constructor() {
     super();
+    this.timecode = '';
+    this.startTime = '';
     this.title = '';
     this.presenter = '';
     this.description = '';
+    this.longDescription = '';
     this.video = '';
   }
   // convention I enjoy using to define the tag's name
@@ -20,8 +23,11 @@ export class TvChannel extends LitElement {
     return {
       title: { type: String },
       description: {type: String},
+      longDescription: {type: String},
       presenter: { type: String },
       video: {type: String},
+      timecode: {type: Number},
+      startTime: {type: String},
     };
   }
   // LitElement convention for applying styles JUST to our element
@@ -54,13 +60,25 @@ export class TvChannel extends LitElement {
       p {
         font-size: 12px;
       }
+      .startTime{
+        display: inline-flex;
+        vertical-align: top;
+        padding: 16px;
+        margin: 0;
+        background-color: lightblue;
+        border-radius: 8px;
+        height: 6px;
+      }
     `;
   }
   // LitElement rendering template of your element
   render() {
     return html`
       <div class="wrapper">
-        <h3>${this.title}</h3>
+      <div class="startTime">
+          ${this.startTime}</div>
+  <h6>${this.timecode} min</h6>
+      <h3>${this.title}</h3>
         <h4>${this.presenter}</h4>
         <slot></slot>
       </div>  

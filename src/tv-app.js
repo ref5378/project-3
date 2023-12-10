@@ -3,6 +3,7 @@ import { LitElement, html, css } from 'lit';
 import '@shoelace-style/shoelace/dist/components/dialog/dialog.js';
 import '@shoelace-style/shoelace/dist/components/button/button.js';
 import "./tv-channel.js"; 
+import "@lrnwebcomponents/video-player/video-player.js";
 
 export class TvApp extends LitElement {
   // defaults
@@ -12,9 +13,10 @@ export class TvApp extends LitElement {
     this.source = new URL('../assets/channels.json', import.meta.url).href;
     this.listings = [];
     this.activeItem = {
-      title: null,
-      id: null,
-      description: null,
+      title: '',
+      id: '',
+      description: '',
+      longDescription: ''
     };
   }
   // convention I enjoy using to define the tag's name
@@ -75,6 +77,20 @@ export class TvApp extends LitElement {
       .wrapper{
         display: inline-flex;
       }
+      video-player{
+        display: inline-flex;
+        width: 950px; 
+        height: 600px;
+      }
+     /* .timecode-container {
+        top: 0;
+        left: 0;
+        margin: 10px;
+        padding: 5px;
+        color: white;
+        background-color: #384194;
+        border-radius: 5px;
+        z-index: 1; /* Ensure the timecode box is above other elements */
       .
       `,
     ];
@@ -89,12 +105,14 @@ export class TvApp extends LitElement {
           (item) => html`
             <tv-channel
               id="${item.id}"
+              timecode="${item.metadata.timecode}"
               title="${item.title}"
               presenter="${item.metadata.author}"
               description="${item.description}"
+              longDescription="${item.longDescription}"
               @click="${this.itemClick}"
               video="${item.metadata.source}"
-              start-time="${item.metadata.startTime}"
+              startTime="${item.metadata.startTime}"
             >
             </tv-channel>
           `
@@ -103,14 +121,21 @@ export class TvApp extends LitElement {
        </div>
       ${this.activeItem.name}
         <!-- video -->
+        
           <div class="wrapper">
-        <iframe
+       <!-- video -->
+        <!--iframe id="video-player" style="margin: 30px;"
           width="750"
           height="400"
-          src="https://www.youtube.com/embed/_sZH-psg9yE" 
+          src="https://www.youtube.com/embed/9MT-BNuUCpM" 
           frameborder="0"
           allowfullscreen
-        ></iframe>
+        ></iframe-->
+        <video-player id="video-player" source="https://www.youtube.com/embed/9MT-BNuUCpM" accent-color="orange" dark track="https://haxtheweb.org/files/HAXshort.vtt"
+        style="width= 750px; height= 400px;">
+        </video-player>
+
+      
         <!-- discord / chat - optional -->
         <div class="discord">
           <widgetbot 
@@ -134,7 +159,11 @@ export class TvApp extends LitElement {
             <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
       </div>
     </div>
-    <tv-channel title=${this.activeItem.title} presenter="${this.activeItem.author}">
+
+    <tv-channel title=${this.activeItem.title} 
+    presenter="${this.activeItem.author}" 
+    startTime="${this.activeItem.startTime}" 
+    timecode="${this.activeItem.timecode}">
     <p id= "description">${this.activeItem.description}
     </p>
   </tv-channel>
@@ -146,10 +175,12 @@ export class TvApp extends LitElement {
       </sl-dialog>
     `;
   }
+
 changeVideo() {
-    const iframe = this.shadowRoot.querySelector('iframe');
-    iframe.src = this.createSource();
+  const videoPlayer = this.shadowRoot.querySelector('video-player');
+  videoPlayer.source = this.createSource();
   }
+  
    extractVideoId(link) {
     try {
       const url = new URL(link);
@@ -164,15 +195,10 @@ changeVideo() {
     return "https://www.youtube.com/embed/" + this.extractVideoId(this.activeItem.video);
   }
 
-  playSource(){
-    return this.itemClick(this.createSource);
-  }
-
   watchVideo(e) {
     const dialog = this.shadowRoot.querySelector('.dialog');
     dialog.hide();
-    const iframe = this.shadowRoot.querySelector('iframe');
-    iframe.src = this.playSource();
+    this.shadowRoot.querySelector('video-player').shadowRoot.querySelector('a11y-media-player').play();
   }
 
   itemClick(e) {
