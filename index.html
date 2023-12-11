@@ -31,23 +31,25 @@
     import "./src/tv-app.js";
     import "./src/tv-channel.js";
 
-    function updatePageContent(title, author, description, longDescription) {
+    function updatePageContent(title, author, description, longDescription, startTime) {
       document.getElementById('title').innerText = toString(this.activeItem.title);
       document.getElementById('presenter').innerText = author;
       document.getElementById('description').innerText = description;
-      document.getElementById('long-description').innerText = longDescription;
+      document.getElementById('startTime').innerText = startTime;
+      document.getElementById('longDescription').innerText = longDescription;
     }
 
     const tvApp = document.getElementsByName("tv-app.js");
 
     // Listen for changes in the activeItem and update the page content accordingly
     tvApp.addEventListener('active-item-changed', (event) => {
-      //const { title, author, description, longDescription } = event.detail.activeItem;
+      //const { title, author, description, longDescription, startTime } = event.detail.activeItem;
       const title = event.detail.activeItem.title;
       const author = event.detail.activeItem.author;
       const description = event.detail.activeItem.description;
+      const startTime = event.detail.activeItem.startTime;
       const longDescription = event.detail.activeItem.longDescription;
-      updatePageContent(title, author, description, longDescription);
+      updatePageContent(title, author, description, longDescription, startTime);
     });
   </script>
 </body>

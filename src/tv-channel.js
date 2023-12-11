@@ -60,14 +60,25 @@ export class TvChannel extends LitElement {
       p {
         font-size: 12px;
       }
+      .descriptionWrapper{
+        margin: .5rem;
+        padding: .5rem;
+        padding-left: 16px;
+        padding-right: 16px;
+        border-radius: 6px;
+        border-color: #4a4a4a;
+        box-shadow: 0px 0px 0px 1px #dbdbdb;
+        background-color: #ffffff;
+      }
       .startTime{
         display: inline-flex;
         vertical-align: top;
-        padding: 16px;
+        text-align: center;
+        padding: 12px;
         margin: 0;
         background-color: lightblue;
+        border-color: #1620d7;
         border-radius: 8px;
-        height: 6px;
       }
     `;
   }
@@ -81,7 +92,7 @@ export class TvChannel extends LitElement {
       <h3>${this.title}</h3>
         <h4>${this.presenter}</h4>
         <slot></slot>
-      </div>  
+      </div>
       `;
   }
 }

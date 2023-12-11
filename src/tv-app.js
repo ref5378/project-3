@@ -16,7 +16,9 @@ export class TvApp extends LitElement {
       title: '',
       id: '',
       description: '',
-      longDescription: ''
+      longDescription: '',
+      startTime: '',
+      timecode: ''
     };
   }
   // convention I enjoy using to define the tag's name
@@ -82,6 +84,17 @@ export class TvApp extends LitElement {
         width: 950px; 
         height: 600px;
       }
+      .descriptionWrapper{
+        margin: .5rem;
+        padding: .5rem;
+        padding-left: 16px;
+        padding-right: 16px;
+        border-radius: 6px;
+        border-color: #4a4a4a;
+        box-shadow: 0px 0px 0px 1px #dbdbdb;
+        background-color: #ffffff;
+      }
+      
      /* .timecode-container {
         top: 0;
         left: 0;
@@ -160,13 +173,15 @@ export class TvApp extends LitElement {
       </div>
     </div>
 
-    <tv-channel title=${this.activeItem.title} 
+    <tv-channel title="${this.activeItem.title}" 
     presenter="${this.activeItem.author}" 
-    startTime="${this.activeItem.startTime}" 
-    timecode="${this.activeItem.timecode}">
-    <p id= "description">${this.activeItem.description}
-    </p>
-  </tv-channel>
+    startTime="${this.activeItem.startTime}">
+    <p id="description">${this.activeItem.description} </p>
+    <div class="descriptionWrapper">
+        <div class="longDescription">
+        ${this.activeItem.longDescription} </div>
+          </div>  
+  </tv-channel> 
 
       <!-- dialog -->
       <sl-dialog label="${this.activeItem.title}" class="dialog">
@@ -208,6 +223,7 @@ changeVideo() {
       title: e.target.title,
       id: e.target.id,
       video: e.target.video, 
+      startTime: e.target.startTime
     };
     this.changeVideo(); // Call changeVideo 
     const dialog = this.shadowRoot.querySelector('.dialog');
