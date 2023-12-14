@@ -26,7 +26,7 @@ export class TvChannel extends LitElement {
       longDescription: {type: String},
       presenter: { type: String },
       video: {type: String},
-      timecode: {type: Number},
+      timecode: {type: String},
       startTime: {type: String},
     };
   }
@@ -53,30 +53,21 @@ export class TvChannel extends LitElement {
         padding-left: 16px;
         padding-right: 16px;
         border-radius: 6px;
-        border-color: #4a4a4a;
-        box-shadow: 0px 0px 0px 1px #dbdbdb;
-        background-color: #ffffff;
+        border-color: lightskyblue;
+        box-shadow: 1px 1px 1px 1px #dbdbdb;
+        background-color: #fff5c4;
       }
       p {
         font-size: 12px;
       }
-      .descriptionWrapper{
-        margin: .5rem;
-        padding: .5rem;
-        padding-left: 16px;
-        padding-right: 16px;
-        border-radius: 6px;
-        border-color: #4a4a4a;
-        box-shadow: 0px 0px 0px 1px #dbdbdb;
-        background-color: #ffffff;
-      }
+  
       .startTime{
         display: inline-flex;
         vertical-align: top;
         text-align: center;
         padding: 12px;
         margin: 0;
-        background-color: lightblue;
+        background-color: lightpink;
         border-color: #1620d7;
         border-radius: 8px;
       }

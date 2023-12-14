@@ -175,12 +175,9 @@ export class TvApp extends LitElement {
 
     <tv-channel title="${this.activeItem.title}" 
     presenter="${this.activeItem.author}" 
-    startTime="${this.activeItem.startTime}">
-    <p id="description">${this.activeItem.description} </p>
-    <div class="descriptionWrapper">
-        <div class="longDescription">
-        ${this.activeItem.longDescription} </div>
-          </div>  
+    startTime="${this.activeItem.startTime}"
+    timecode="${this.activeItem.timecode}">
+    <p id="description">${this.activeItem.description} </p> 
   </tv-channel> 
 
       <!-- dialog -->
@@ -223,7 +220,8 @@ changeVideo() {
       title: e.target.title,
       id: e.target.id,
       video: e.target.video, 
-      startTime: e.target.startTime
+      startTime: e.target.startTime,
+      timecode: e.target.timecode
     };
     this.changeVideo(); // Call changeVideo 
     const dialog = this.shadowRoot.querySelector('.dialog');

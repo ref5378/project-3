@@ -37,6 +37,7 @@
       document.getElementById('description').innerText = description;
       document.getElementById('startTime').innerText = startTime;
       document.getElementById('longDescription').innerText = longDescription;
+      document.getElementById('timecode').innerText = timecode;
     }
 
     const tvApp = document.getElementsByName("tv-app.js");
@@ -49,6 +50,7 @@
       const description = event.detail.activeItem.description;
       const startTime = event.detail.activeItem.startTime;
       const longDescription = event.detail.activeItem.longDescription;
+      const timecode = event.detail.activeItem.timecode;
       updatePageContent(title, author, description, longDescription, startTime);
     });
   </script>
